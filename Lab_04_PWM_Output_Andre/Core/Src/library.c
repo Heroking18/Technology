@@ -436,33 +436,30 @@ void reset_interrupt(uint32_t pin)
 
 //*****************************************************************************
 //              General-Purpose TIM4 Register CONFIG
-void CMR_TIM4_config(TIM_TypeDef *TIMx, uint16_t PSC_val, uint16_t ARR_val, uint8_t direction, uint8_t CMS_mode, IRQn_Type irqNum)
+void CMR_TIM4_config(void)
 {
 	RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;		// TIM4 clock enable register
-	TIMx->CR1 |= TIM_CR1_CEN;				// Enable counter
-	TIMx->DIER |= TIM_DIER_UIE;				// Update interrupt enable
-	TIMx->EGR |= TIM_EGR_UG;
-	TIMx->CR1 |= TIM_CR1_ARPE;				// Auto-reload preload enable
+	TIM4->CR1 |= TIM_CR1_CEN;				// Enable counter
 
 	// fclk = 16Mhz
 	//PWM frquency = fclk/ARR/PSC
 	//PWM Duty Cycle = CCR4/ARR
-	TIMx->PSC = PSC_val-1;					// prescaler
-	TIMx->ARR = ARR_val-1;					// auto-reload register. Controls frequency of PWM.
-	TIMx->CNT = 0;							// Reset counter
-	TIMx->CR1 |= direction;					// Direction
-	TIMx->CR1 |= CMS_mode;					// Center-aligned mode selection
-	NVIC_EnableIRQ(irqNum);					// Interrupt NVIC irqNum configuration register
+	TIM4->PSC = 16;						// prescaler
+	TIM4->ARR = 1000;					// auto-reload register. Controls frequency of PWM.
+	TIM4->CNT = 0;						// Reset counter
+
+	TIM4->CCR4 = 1000; //for 75%			// Capture/Compare 4 Value. Controls duty cycle of the PWM.
+	TIM4->CCER |= TIM_CCER_CC4E;		// Capture/compare 4 interrupt enable
+
+	TIM4->CCMR2 = (1<<13)|(1<<14);
 }
 
-void CCM_TIM4_config()
-{
-	TIM4->CCMR2 |= TIM_CCMR2_OC4M_1;
-	TIM4->CCMR2 |= TIM_CCMR2_OC4M_2;
-	TIM4->CCMR2 |= TIM_CCMR2_OC4PE;
-	TIM4->CCR4 = 7500; //for 75%			// Capture/Compare 4 Value. Controls duty cycle of the PWM.
-	TIM4->CCER |= TIM_CCER_CC4E;			// Capture/compare 4 interrupt enable
-}
+//void CCM_TIM4_config()
+//{
+//	TIM4->CCMR2 |= TIM_CCMR2_OC4M_1;
+//	TIM4->CCMR2 |= TIM_CCMR2_OC4M_2;
+//	TIM4->CCMR2 |= TIM_CCMR2_OC4PE;
+//}
 
 /* USER CODE END PFP */
 

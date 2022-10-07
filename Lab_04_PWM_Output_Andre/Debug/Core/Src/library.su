@@ -10,5 +10,4 @@
 ../Core/Src/library.c:104:6:config_gpio_interrupt	24	static
 ../Core/Src/library.c:421:6:enable_gpio_interrupt	16	static
 ../Core/Src/library.c:431:6:reset_interrupt	16	static
-../Core/Src/library.c:439:6:CMR_TIM4_config	24	static
-../Core/Src/library.c:458:6:CCM_TIM4_config	4	static
+../Core/Src/library.c:439:6:CMR_TIM4_config	4	static

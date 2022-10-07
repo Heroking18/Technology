@@ -200,18 +200,18 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-void TIM4_IRQHandler(void)  			// Do not forget the ‘extern “C”’ in case of C++
-{
-    TIM4->SR &= ~TIM_SR_CC4IF; 			// Reset capture/compare 4 interrupt flag.
-    									// This is needed otherwise the
-    									// interrupt handler will be called again.
-    // handle interrupt here
-    GPIOA->ODR |= 0x08;
-//    flag = 1;
-//	if(flag)
-//	{
-//		LED_PWM();
-//	}
-}
+//void TIM4_IRQHandler(void)  			// Do not forget the ‘extern “C”’ in case of C++
+//{
+//    TIM4->SR &= ~TIM_SR_CC4IF; 			// Reset capture/compare 4 interrupt flag.
+//    									// This is needed otherwise the
+//    									// interrupt handler will be called again.
+//    // handle interrupt here
+//    GPIOA->ODR |= 0x08;
+////    flag = 1;
+////	if(flag)
+////	{
+////		LED_PWM();
+////	}
+//}
 
 /* USER CODE END 1 */

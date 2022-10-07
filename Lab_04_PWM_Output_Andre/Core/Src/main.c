@@ -71,11 +71,10 @@ int main(void)
 	RCC->AHBENR |= RCC_AHBENR_GPIOBEN; //enable the bus for port B.
 
 	// Pin Configurations.
-	SetPin(GPIOB, 3, ALTFUNCTMODE, PUSHPULL, LOWSPEED, NOPULL); // (PB3) LED0
-	CMR_TIM4_config(TIM4, 1600, 10000, UPCOUNTER, EDGEALIGN, TIM4_IRQn);
-	CCM_TIM4_config();
+	SetPin(GPIOB, 4, ALTFUNCTMODE, PUSHPULL, LOWSPEED, NOPULL); // (PB4) LED0
+	CMR_TIM4_config();
 
-	GPIOA->AFR[0] = (GPIOA->AFR[0] & ~GPIO_AFRL_AFRL2) | (0b0111 << GPIO_AFRL_AFRL2_Pos);
+	GPIOB->AFR[1] = 2<<4;
 
   /* USER CODE END 1 */
 
@@ -108,20 +107,11 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-//	  LED_PWM();
-//	  GPIOA->ODR |= 0x08;
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
-
-//void LED_PWM()
-//{
-//	flag = 0;
-//	while(!(TIM4->SR & 1)){}
-//	TIM4->SR &= ~TIM_SR_UIF;
-//	GPIOA->ODR ^= 0x08;
-//}
 
 /**
   * @brief System Clock Configuration

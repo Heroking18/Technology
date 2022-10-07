@@ -84,8 +84,7 @@ void reset_interrupt(uint32_t);
 
 //*****************************************************************************
 //              General-Purpose TIM4 Register CONFIG
-void CMR_TIM4_config(TIM_TypeDef *, uint16_t, uint16_t, uint8_t, uint8_t, IRQn_Type);
-void CCM_TIM4_config();
+void CMR_TIM4_config(void);
 
 /* USER CODE END EFP */
 
