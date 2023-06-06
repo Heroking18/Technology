@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        <!--Character Model-->
+        <a-entity id="person" position="0 0 -3">
+          <a-box
+            id="hair"
+            position="0 2 0.024"
+            width="0.61"
+            height="0.2"
+            depth="0.45"
+            color="#663300"
+          ></a-box>
+
+          <a-box
+            id="head"
+            position="0 1.7 0"
+            width="0.6"
+            height="0.6"
+            depth="0.4"
+            color="#d2a679"
+          ></a-box>
+
+          <a-circle
+            id="left-eye"
+            position="-0.1 1.75 0.21"
+            width="0.1"
+            height="0.1"
+            depth="0.1"
+            color="#CCC"
+            radius="0.06"
+          ></a-circle>
+          <a-circle
+            id="left-pupil"
+            position="-0.1 1.75 0.22"
+            width="0.1"
+            height="0.1"
+            depth="0.1"
+            color="#000000"
+            radius="0.04"
+          ></a-circle>
+
+          <a-circle
+            id="right-eye"
+            position="0.1 1.75 0.21"
+            width="0.1"
+            height="0.1"
+            depth="0.1"
+            color="#CCC"
+            radius="0.06"
+          ></a-circle>
+          <a-circle
+            id="right-pupil"
+            position="0.1 1.75 0.22"
+            width="0.1"
+            height="0.1"
+            depth="0.1"
+            color="#000000"
+            radius="0.04"
+          ></a-circle>
+
+          <a-box
+            id="mouth"
+            position="0 1.55 0.11"
+            width="0.2"
+            height="0.05"
+            depth="0.2"
+            color="#ff3399"
+            animation="property: scale; dir: alternate; loop: true; to: 1 1.5 1.2; dur: 200; easing: easeInOutSine; delay: 2000"
+          ></a-box>
+
+          <a-box
+            id="chest"
+            position="0 1.355 0.115"
+            width="0.2"
+            height="0.2"
+            depth="0.2"
+            color="#d2a679"
+          ></a-box>
+          <a-box
+            id="body"
+            position="0 1 0.01"
+            width="0.65"
+            height="0.9"
+            depth="0.4"
+            color="#009933"
+          ></a-box>
+          <a-box
+            id="shorts"
+            position="0 0.65 -0.005"
+            width="0.68"
+            height="0.4"
+            depth="0.5"
+            color="#996633"
+          ></a-box>
+
+          <a-box
+            id="left-arm"
+            position="0.5 1 0"
+            width="0.3"
+            height="0.8"
+            depth="0.2"
+            color="#d2a679"
+          ></a-box>
+          <a-box
+            id="right-arm"
+            position="-0.5 1 0"
+            width="0.3"
+            height="0.8"
+            depth="0.2"
+            color="#d2a679"
+          ></a-box>
+
+          <a-box
+            id="left-leg"
+            position="0.2 0.2 0"
+            width="0.23"
+            height="0.6"
+            depth="0.3"
+            color="#d2a679"
+          ></a-box>
+          <a-box
+            id="right-leg"
+            position="-0.2 0.2 0"
+            width="0.23"
+            height="0.6"
+            depth="0.3"
+            color="#d2a679"
+          ></a-box>
+        </a-entity>
+        <!-- Tree Model -->
+        <a-entity id="tree" position="-1 2 -3">
+          <a-cylinder color="#804000" height="4" radius="0.3"></a-cylinder>
+
+          <a-entity
+            id="large sphere"
+            animation="property: scale; dir: alternate; loop: true; to: 1 1.1 1.2; dur: 2000; easing: easeInOutSine;"
+          >
+            <a-sphere
+              id="large sphere left"
+              position="-1 1.5 -0.5"
+              radius="1.5"
+              color="#006600"
+            ></a-sphere>
+            <a-sphere
+              id="large sphere right"
+              position="1 1.5 -0.5"
+              radius="1.5"
+              color="#006600"
+            ></a-sphere>
+            <a-sphere
+              id="large sphere top"
+              position="0 2.5 0"
+              radius="1.5"
+              color="#006600"
+            ></a-sphere>
+          </a-entity>
+        </a-entity>
+
+        <!--    Background Music    -->
+        <a-entity
+          id="BG Music"
+          position="0 1 -2.5"
+          sound="src: url(C418_Minecraft.mp3); autoplay: true"
+        ></a-entity>
+
+        <!--   Model Platform    -->
+        <a-plane
+          position="0 0 -4"
+          rotation="-90 0 0"
+          width="4"
+          height="4"
+          depth="4"
+          color="#808080"
+        ></a-plane>
+
+        <a-entity
+          id="river"
+          position="0 1 -2.5"
+          sound="src: url(C418_Minecraft.mp3); autoplay: true"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
